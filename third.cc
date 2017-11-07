@@ -181,7 +181,7 @@ main (int argc, char *argv[])
   serverApps.Stop (Seconds (10.0));
 
   UdpEchoClientHelper echoClient (csmaInterfaces.GetAddress (nCsma), 9);
-  echoClient.SetAttribute ("MaxPackets", UintegerValue (1));
+  echoClient.SetAttribute ("MaxPackets", UintegerValue (1000));
   echoClient.SetAttribute ("Interval", TimeValue (Seconds (1.0)));
   echoClient.SetAttribute ("PacketSize", UintegerValue (1024));
 
@@ -197,10 +197,10 @@ main (int argc, char *argv[])
 
 //-----------------FlowMonitor-THROUGHPUT----------------
 
-    std::string fileNameWithNoExtension = "FlowVSThroughput_Huenstein";
+    std::string fileNameWithNoExtension = "third_FlowVSThroughput";
     std::string graphicsFileName        = fileNameWithNoExtension + ".png";
     std::string plotFileName            = fileNameWithNoExtension + ".plt";
-    std::string plotTitle               = "Flow vs Throughput";
+    std::string plotTitle               = "third_FlowVSThroughput";
     std::string dataTitle               = "Throughput";
 
     // Instantiate the plot and set its title.
@@ -227,10 +227,10 @@ main (int argc, char *argv[])
 
 //-----------------FlowMonitor-JITTER--------------------
 
-    std::string fileNameWithNoExtension2 = "FlowVSJitter_Huenstein";
+    std::string fileNameWithNoExtension2 = "third_FlowVSJitter";
     std::string graphicsFileName2      = fileNameWithNoExtension2 + ".png";
     std::string plotFileName2        = fileNameWithNoExtension2 + ".plt";
-    std::string plotTitle2           = "Flow vs Jitter";
+    std::string plotTitle2           = "third_FlowVSJitter";
     std::string dataTitle2           = "Jitter";
 
     Gnuplot gnuplot2 (graphicsFileName2);
@@ -251,10 +251,10 @@ main (int argc, char *argv[])
 
 //-----------------FlowMonitor-DELAY---------------------
 
-  std::string fileNameWithNoExtension3 = "FlowVSDelay_Huenstein";
+  std::string fileNameWithNoExtension3 = "third_FlowVSDelay";
   std::string graphicsFileName3      = fileNameWithNoExtension3 + ".png";
   std::string plotFileName3        = fileNameWithNoExtension3 + ".plt";
-  std::string plotTitle3       = "Flow vs Delay";
+  std::string plotTitle3       = "third_FlowVSDelay";
   std::string dataTitle3       = "Delay";
 
       Gnuplot gnuplot3 (graphicsFileName3);
@@ -272,7 +272,7 @@ main (int argc, char *argv[])
 
 //-------------------------Metodo-Animation-------------------------
 
-      AnimationInterface anim ("third_Netanim_FlowMonitor.xml"); // Mandatory
+      AnimationInterface anim ("third.xml"); // Mandatory
       
       for (uint32_t i = 0; i < csmaNodes.GetN(); ++i)
       {
