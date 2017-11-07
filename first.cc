@@ -21,6 +21,11 @@
 #include "ns3/internet-module.h"
 #include "ns3/point-to-point-module.h"
 #include "ns3/applications-module.h"
+//Método netanim
+#include "ns3/netanim-module.h"
+//Mobilidade
+#include "ns3/mobility-module.h"
+
 
 //Namespace
 using namespace ns3;
@@ -66,7 +71,7 @@ main (int argc, char *argv[])
 
   mobility.SetMobilityModel ("ns3::RandomWalk2dMobilityModel",
                              "Bounds", RectangleValue (Rectangle (-50, 50, -50, 50)));
-  mobility.Install (wifiStaNodes);
+  mobility.Install (nodes);
 
 //Construindo a Pilha
   InternetStackHelper stack;
@@ -96,6 +101,20 @@ main (int argc, char *argv[])
   clientApps.Start (Seconds (2.0));
   clientApps.Stop (Seconds (10.0));
 
+//-------------------------Metodo-Animation-------------------------
+
+      AnimationInterface anim ("third_Netanim_FlowMonitor.xml"); // Mandatory
+      
+        anim.UpdateNodeDescription (nodes.Get(0), "NODE_0"); // Optional
+        anim.UpdateNodeColor (nodes.Get(0), 255, 0, 0); // Coloração
+     
+        anim.UpdateNodeDescription (nodes.Get(1), "NODE_1"); // Optional
+        anim.UpdateNodeColor (nodes.Get(1), 255, 255, 0); // Coloração
+      
+
+      anim.EnablePacketMetadata (); // Optional
+
+  Simulator::Stop(Seconds(10.0));
   Simulator::Run ();
   Simulator::Destroy ();
   return 0;

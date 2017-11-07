@@ -1,0 +1,57 @@
+Instalando o NS3
+
+1 - Executar script com ferramentas necessárias para o NS3
+sudo su
+diretório ./nomedoarquivo
+
+2 - Intalação manual
+
+Download ns-3 mercurial:
+Comandos:
+cd
+mkdir repos
+cd repos
+hg clone http://code.nsnam.org/ns-3-allinone
+
+Verificar se deu certo:
+ls
+Resultado esperado:
+build.py*  constants.py  dist.py*  download.py*  README  util.py
+
+Prosseguir com o comando:
+./download.py -n ns-3-dev
+cd ns-3-allinone
+
+Verificar se deu certo:
+ls
+Resultado esperado:
+ build.py*     constants.pyc  download.py*  nsc/        README      util.pyc
+ constants.py  dist.py*       ns-3-dev/     pybindgen/  util.py
+
+Verificar se o download funcionou:
+cd ns-3-dev
+ls
+Resultado esperado:
+AUTHORS       examples/  RELEASE_NOTES  utils/   wscript
+ bindings/     LICENSE    samples/       VERSION  wutils.py
+ CHANGES.html  ns3/       scratch/       waf*
+ doc/          README     src/           waf.bat*
+
+Voltar a pasta anterior
+cd..
+
+Construir o NS3:
+./build.py
+
+Resultado esperado no final da execução:
+Build finished successfully (00:02:37) (o tempo pode mudar).
+Leaving directory `./ns-3-dev'
+
+3 - Ativar testes e exemplos
+Na mesma pasta executar o camando abaixo para ativar os exemplos e testes:
+./build.py --enable-examples --enable-tests
+
+
+
+Por: Carlos Lopes
+Email: carloslopesufpa@gmail.com
